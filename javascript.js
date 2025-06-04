@@ -45,10 +45,25 @@ for (book of myLibrary){
    read.textContent = book.alreadyRead ? "Already read" : "Not read yet";
    card.appendChild(read);
    let deleteButton = document.createElement("button");
-   deleteButton.textContent = "Delete"
+   deleteButton.textContent = "Delete";
+
+   deleteButton.addEventListener("click", () => {
+    const id = card.dataset.id;
+    const index = myLibrary.findIndex(book => book.id === id)
+    myLibrary.splice(index,1);
+    renderLibrary();
+   });
+
    card.appendChild(deleteButton);
    let changeReadStatus = document.createElement("button");
    changeReadStatus.textContent = book.alreadyRead ? "Mark as Unread" : "Mark as Read";
+   changeReadStatus.addEventListener("click", () => {
+    const id = card.dataset.id;
+    const book = myLibrary.find(book => book.id === id);
+    book.alreadyRead = !book.alreadyRead;
+    renderLibrary();
+    
+   })
    card.appendChild(changeReadStatus);
    
   container.appendChild(card);
