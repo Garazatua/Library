@@ -36,10 +36,10 @@ for (book of myLibrary){
    title.textContent = book.title;
    card.appendChild(title);
    let author = document.createElement("p");
-   author.textContent = book.author;
+   author.textContent = "Author: " + book.author;
    card.appendChild(author);
    let pages = document.createElement("p");
-   pages.textContent = book.pages;
+   pages.textContent = "Number of Pages: " + book.pages;
    card.appendChild(pages);
    let read = document.createElement("p");
    read.textContent = book.alreadyRead ? "Already read" : "Not read yet";
@@ -62,7 +62,7 @@ for (book of myLibrary){
     const book = myLibrary.find(book => book.id === id);
     book.alreadyRead = !book.alreadyRead;
     renderLibrary();
-    
+
    })
    card.appendChild(changeReadStatus);
    
@@ -77,5 +77,6 @@ form.addEventListener("submit", (event) => {
   const read = form.read.value === "true";
   addBookToLibrary(form.title.value, form.author.value, form.pages.value, read);
   renderLibrary();
-  dialog.close()
+  dialog.close();
+  form.reset();
 });
