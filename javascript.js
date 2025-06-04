@@ -1,3 +1,16 @@
+// dialog
+const closeBtn = document.querySelector("#close-modal");
+const dialog = document.querySelector("#mydialog")
+
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
+
+
+
+
+//logic
+const container = document.querySelector(".cards-container")
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -13,7 +26,41 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book);
 }
 
-
+function renderLibrary(){
+  container.innerHTML = "";
 for (book of myLibrary){
-    
-}
+   let card = document.createElement("div");
+   card.classList.add("card");
+   card.setAttribute("data-id", book.id);
+   let title = document.createElement("h2");
+   title.textContent = book.title;
+   card.appendChild(title);
+   let author = document.createElement("p");
+   author.textContent = book.author;
+   card.appendChild(author);
+   let pages = document.createElement("p");
+   pages.textContent = book.pages;
+   card.appendChild(pages);
+   let read = document.createElement("p");
+   read.textContent = book.alreadyRead ? "Already read" : "Not read yet";
+   card.appendChild(read);
+   let deleteButton = document.createElement("button");
+   deleteButton.textContent = "Delete"
+   card.appendChild(deleteButton);
+   let changeReadStatus = document.createElement("button");
+   changeReadStatus.textContent = book.alreadyRead ? "Mark as Unread" : "Mark as Read";
+   card.appendChild(changeReadStatus);
+   
+  container.appendChild(card);
+}}
+
+
+const form = document.querySelector("#new-book-form");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const read = form.read.value === "true";
+  addBookToLibrary(form.title.value, form.author.value, form.pages.value, read);
+  renderLibrary();
+  dialog.close()
+});

@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="javascript.js" defer></script>
 </head>
 <body>
-    
+    <main>
+        <div class="title-container">
+            <h1>Library</h1>
+            <button commandfor="mydialog" command="show-modal">New Book</button>
+        </div>
+        <dialog id="mydialog">
+            <h1>Add A New Book</h1>
+            <button type="button" id="close-modal">✖</button> 
+            <form method="dialog" id="new-book-form">
+                <div>
+                    <h3>Fill in the details of the book you want to add:</h3>
+                    <label for="title"T>Book Title:</label>
+                    <input id="title" type="text" placeholder="Harry Potter" required>
+                    <label for="author"T>Book Author</label>
+                    <input id="author" type="text" placeholder="J. K. Rowling" required>
+                    <label for="pages"T>Number of Pages</label>
+                    <input id="pages" type="number" placeholder="309" required>
+                    <p>Have you already read it?</p>
+                    <label>
+                        <input type="radio" name="read" value="true" required> Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="read" value="false"> No
+                    </label>
+                    <button type="submit">Add</button>
+                </div>
+            </form>
+        </dialog>
+
+        <div class="cards-container">
+            <div class="card">
+                <h2>Book Title</h2>
+                <p>Author</p>
+                <p>Pages</p>
+                <p>Already Read</p>
+                <button>Delete</button>
+                <button>Mark as unread</button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
