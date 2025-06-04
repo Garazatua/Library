@@ -1,10 +1,15 @@
 // dialog
 const closeBtn = document.querySelector("#close-modal");
+const showBtn = document.querySelector("#show-modal");
 const dialog = document.querySelector("#mydialog")
 
 closeBtn.addEventListener("click", () => {
   dialog.close();
 });
+
+showBtn.addEventListener("click", () => {
+  dialog.showModal();
+})
 
 
 
