@@ -18,12 +18,15 @@ showBtn.addEventListener("click", () => {
 const container = document.querySelector(".cards-container")
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.alreadyRead = read;
+
+class Book {
+  id = crypto.randomUUID();
+  constructor (title, author, pages, read){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.alreadyRead = read;
+  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
